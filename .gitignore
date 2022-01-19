@@ -7,6 +7,9 @@ bin
 ##VS Projects
 *.vcxproj
 
+##Makefiles
+**/Makefile
+
 ## Dear ImGui artifacts
 imgui.ini
 
