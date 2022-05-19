@@ -26,9 +26,25 @@ project "ImGui"
         systemversion "latest"
         
     filter "configurations:Debug"
-		runtime "Debug"
-        symbols "on"
+	runtime "Debug"
+	symbols "on"
 
-    filter "configurations:Release"
+	filter "configurations:ARMd"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:ARM64d"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
 		runtime "Release"
-        optimize "on"
+		optimize "on"
+
+	filter "configurations:ARM"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:ARM64"
+		runtime "Release"
+		optimize "on"
