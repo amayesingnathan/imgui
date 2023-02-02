@@ -275,6 +275,20 @@ struct ImVec2
 #endif
 };
 
+// ImVec3: 3D vector used to store positions, sizes etc. [Compile-time configurable type]
+IM_MSVC_RUNTIME_CHECKS_OFF
+struct ImVec3
+{
+    float                                   x, y, z;
+    constexpr ImVec3() : x(0.0f), y(0.0f), z(0.0f) { }
+    constexpr ImVec3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) { }
+    float  operator[] (size_t idx) const { IM_ASSERT(idx == 0 || idx == 1 || idx == 2); return (&x)[idx]; }  // We very rarely use this [] operator, the assert overhead is fine.
+    float& operator[] (size_t idx) { IM_ASSERT(idx == 0 || idx == 1 || idx == 2); return (&x)[idx]; }  // We very rarely use this [] operator, the assert overhead is fine.
+#ifdef IM_VEC3_CLASS_EXTRA
+    IM_VEC3_CLASS_EXTRA     // Define additional constructors and implicit cast operators in imconfig.h to convert back and forth between your math types and ImVec2.
+#endif
+};
+
 // ImVec4: 4D vector used to store clipping rectangles, colors etc. [Compile-time configurable type]
 struct ImVec4
 {
