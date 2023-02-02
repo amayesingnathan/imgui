@@ -21,6 +21,9 @@ project "ImGui"
 		"imstb_truetype.h",
 		"imgui_demo.cpp"
 	}
+	
+    filter { "files:**.h" }
+        compileas "HeaderUnit"
 
     filter "system:windows"
         systemversion "latest"
